@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturador</title>
+</head>
+
+<body>
+    <script>
+        const facturas = [];
+
+        const facturaTemplate = {
+            tipo: "",
+            numero: "",
+            fechaEmision: "",
+            razonSocial: "",
+            direccion: "",
+            telefono: "",
+            cuit: "",
+            ingresosBrutos: "",
+            inicioActividades: "",
+            cliente: {
+                nombre: "",
+                direccion: "",
+                cuit: "",
+                condicionIVA: ""
+            },
+            condicionVenta: "",
+            items: [
+                {
+                    codigo: "",
+                    descripcion: "",
+                    cantidad: 0,
+                    unidadMedida: "",
+                    precioUnitario: 0,
+                    bonificacion: 0,
+                    alicuotaIVA: 0,
+                    total: 0
+                }
+            ],
+            totales: {
+                importeNetoGravado: 0,
+                iva: 0,
+                importeTotal: 0
+            },
+            importeEnLetras: ""
+        };
+        //Ejemplo en caso de que queramos crear una nueva factura
+        const nuevaFactura = { ...facturaTemplate };
+        nuevaFactura.tipo = "A";
+        nuevaFactura.numero = "0001-00001234";
+        nuevaFactura.fechaEmision = "2025-03-30";
+        nuevaFactura.razonSocial = "Empresa Ejemplo S.A.";
+        nuevaFactura.cliente.nombre = "Juan Doe";
+        nuevaFactura.items = [
+            {
+                codigo: "001",
+                descripcion: "Producto A",
+                cantidad: 2,
+                unidadMedida: "unidad",
+                precioUnitario: 100,
+                bonificacion: 0,
+                alicuotaIVA: 21,
+                total: 242
+            }
+        ];
+        nuevaFactura.totales.importeNetoGravado = 200;
+        nuevaFactura.totales.iva = 42;
+        nuevaFactura.totales.importeTotal = 242;
+
+        //Lo agregamos a nuestra base de datos
+        facturas.push(nuevaFactura);
+
+        console.log(facturas);
+        console.log(facturaTemplate);
+    </script>
+</body>
+
+</html>
